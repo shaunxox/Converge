@@ -62,7 +62,7 @@ export const HomePage: React.FC = () => {
   const currentLang = i18n.language || 'en';
 
   const [user, setUser] = useState<{ name: string; role: string } | null>(null);
-  const [district] = useState(localStorage.getItem('kabadiwala_district') || 'Pune, Maharashtra');
+  const [district] = useState(localStorage.getItem('kabadiwala_district') || 'Mangalore, Karnataka');
   const [showNotifications, setShowNotifications] = useState(false);
   const [nearbyRecyclersList, setNearbyRecyclersList] = useState<any[]>(NEARBY_RECYCLERS);
   const [authorizedCount, setAuthorizedCount] = useState<number>(3);

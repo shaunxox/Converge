@@ -108,14 +108,14 @@ export const HandoverPage: React.FC = () => {
           setIsGettingGps(false);
         },
         () => {
-          // Default to Pune hub coordinates if GPS permission prompt declined or unavailable
-          setGpsLocation({ lat: 18.5204, lng: 73.8567 });
+          // Default to Mangalore hub coordinates if GPS permission prompt declined or unavailable
+          setGpsLocation({ lat: 12.9141, lng: 74.8560 });
           setIsGettingGps(false);
         },
         { enableHighAccuracy: true, timeout: 10000 }
       );
     } else {
-      setGpsLocation({ lat: 18.5204, lng: 73.8567 });
+      setGpsLocation({ lat: 12.9141, lng: 74.8560 });
     }
   }, []);
 

@@ -128,8 +128,8 @@ export const Navigation: React.FC = () => {
               className="w-full bg-[#143628] hover:bg-white/10 border border-white/20 text-stone-200 text-xs font-bold rounded-xl px-3 py-2.5 appearance-none focus:outline-none cursor-pointer flex items-center justify-between"
             >
               <option value="hi" className="bg-[#1B3A2D] text-white">🌐 हिंदी</option>
+              <option value="kn" className="bg-[#1B3A2D] text-white">🌐 ಕನ್ನಡ</option>
               <option value="en" className="bg-[#1B3A2D] text-white">🌐 English</option>
-              <option value="mr" className="bg-[#1B3A2D] text-white">🌐 मराठी</option>
             </select>
             <ChevronDown size={14} className="absolute right-3 top-3 text-stone-400 pointer-events-none" />
           </div>

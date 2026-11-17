@@ -113,7 +113,7 @@ def sync_push(payload: SyncPushRequest, db: Session = Depends(get_db), principal
     return SyncPushResponse(processed=processed_count, results=results)
 
 @router.get("/pull", response_model=SyncPullResponse)
-def sync_pull(district: str = "Pune", since: Optional[str] = None, db: Session = Depends(get_db)):
+def sync_pull(district: str = "Mangalore", since: Optional[str] = None, db: Session = Depends(get_db)):
     recyclers = db.query(Recycler).filter(Recycler.authorization_status == AuthorizationStatus.verified).all()
     prices = db.query(PriceObservation).filter(PriceObservation.location_district == district).all()
 

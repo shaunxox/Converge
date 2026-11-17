@@ -1,17 +1,21 @@
 /**
- * Utility functions for Vernacular Formatting across English, Hindi, and Marathi.
+ * Utility functions for Vernacular Formatting across English, Hindi, and Kannada.
  */
 
 const devanagariDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+const kannadaDigits = ['೦', '೧', '೨', '೩', '೪', '೫', '೬', '೭', '೮', '೯'];
 
 /**
- * Converts Western Arabic numerals (0-9) to Devanagari numerals (०-९) if Hindi or Marathi is selected.
+ * Converts Western Arabic numerals (0-9) to Devanagari numerals (०-९) for Hindi or Kannada numerals (೦-೯) for Kannada.
  */
 export function formatVernacularNumber(value: number | string | null | undefined, lang: string): string {
   if (value === null || value === undefined || value === '') return '';
   const str = String(value);
-  if (lang === 'hi' || lang === 'mr') {
+  if (lang === 'hi') {
     return str.replace(/\d/g, (d) => devanagariDigits[parseInt(d, 10)]);
+  }
+  if (lang === 'kn') {
+    return str.replace(/\d/g, (d) => kannadaDigits[parseInt(d, 10)]);
   }
   return str;
 }
@@ -34,28 +38,28 @@ export function getLocalizedRoleName(roleOrType: string, lang: string): string {
     case 'recycler':
       return lang === 'hi'
         ? 'सत्यापित रीसायकलर (Authorized Recycler)'
-        : lang === 'mr'
-        ? 'मपोप्रमं अधिकृत रीसायकलर (Authorized Recycler)'
-        : 'MPCB Authorized Recycler';
+        : lang === 'kn'
+        ? 'ಅಧಿಕೃತ ಮರುಬಳಕೆದಾರ (Authorized Recycler)'
+        : 'Authorized Recycler';
     case 'shop':
       return lang === 'hi'
         ? 'दुकानदार (Shop Owner)'
-        : lang === 'mr'
-        ? 'दुकानाचा मालक (Shop Owner)'
+        : lang === 'kn'
+        ? 'ಅಂಗಡಿ ಮಾಲೀಕರು (Shop Owner)'
         : 'Shop Owner';
     case 'sub_collector':
       return lang === 'hi'
         ? 'फेरीवाला (Feriwala Collector)'
-        : lang === 'mr'
-        ? 'दारोदारी फिरणारा फेरीवाला (Feriwala)'
+        : lang === 'kn'
+        ? 'ಫೇರಿವಾಲಾ ಸಂಗ್ರಾಹಕ (Feriwala Collector)'
         : 'Feriwala Collector';
     case 'independent':
     case 'collector':
     default:
       return lang === 'hi'
         ? 'स्वतंत्र कबाड़ीवाला (Independent Collector)'
-        : lang === 'mr'
-        ? 'स्वतंत्र कचरा संकलक (Independent Collector)'
+        : lang === 'kn'
+        ? 'ಸ್ವತಂತ್ರ ಗುಜರಿ ಸಂಗ್ರಾಹಕ (Independent Collector)'
         : 'Independent Collector';
   }
 }

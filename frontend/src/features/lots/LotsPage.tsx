@@ -103,12 +103,12 @@ export const LotsPage: React.FC = () => {
     }
 
     const recyclerNameMap: Record<string, string> = {
-      'rec-pune-001': 'EcoRecycle India (Pune Hub)',
-      'rec-pune-002': 'Chinchwad Aggregators & Metals',
-      'rec-mum-001': 'GreenTech E-Waste Solutions',
-      'rec-mum-002': 'Dharavi Metal & E-Resource',
-      'rec-thane-001': 'Thane E-Scrap Solutions',
-      'rec-nag-001': 'Nagpur CleanTech Recovery',
+      'rec-pune-001': 'EcoRecycle Mangalore (Baikampady)',
+      'rec-pune-002': 'Coastal Karnataka Green Recyclers (Surathkal)',
+      'rec-mum-001': 'Dakshina E-Scrap & Metals (Yeyyadi)',
+      'rec-mum-002': 'Kudla E-Waste Solutions (Bunder)',
+      'rec-thane-001': 'Udupi Eco Resources',
+      'rec-nag-001': 'Manipal E-Waste Aggregators',
     };
 
     const recName = tx?.recycler_name || (tx?.recycler_id ? recyclerNameMap[tx.recycler_id] || tx.recycler_id : undefined);
@@ -138,9 +138,9 @@ export const LotsPage: React.FC = () => {
   localLots.forEach(item => lotMap.set(item.lotId, item));
 
   const recyclerNameMapBackend: Record<string, string> = {
-    'rec-pune-001': 'EcoRecycle India (Pune Hub)',
-    'rec-pune-002': 'Chinchwad Aggregators & Metals',
-    'rec-mum-001': 'GreenTech E-Waste Solutions',
+    'rec-pune-001': 'EcoRecycle Mangalore (Baikampady)',
+    'rec-pune-002': 'Coastal Karnataka Green Recyclers (Surathkal)',
+    'rec-mum-001': 'Dakshina E-Scrap & Metals (Yeyyadi)',
   };
 
   backendItems.forEach(bItem => {

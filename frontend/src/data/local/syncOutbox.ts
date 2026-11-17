@@ -40,13 +40,15 @@ export async function flushSyncOutbox(): Promise<{ processed: number; success: b
 
     // Pull delta updates after push
     try {
-      const delta = await pullSyncData('Pune');
+      const activeDistrict = localStorage.getItem('kabadiwala_district') || 'Mangalore';
+      const cleanDistrict = /pune|hadapsar|maharashtra/i.test(activeDistrict) ? 'Mangalore' : activeDistrict;
+      const delta = await pullSyncData(cleanDistrict);
       if (delta && delta.prices && delta.prices.length > 0) {
         for (const p of delta.prices) {
           await db.priceCache.put({
             category: p.material_category,
             sub_category: p.sub_category,
-            district: 'Pune',
+            district: cleanDistrict,
             current_price: p.buying_price,
             market_range_low: Math.round(p.buying_price * 0.9),
             market_range_high: Math.round(p.buying_price * 1.1),

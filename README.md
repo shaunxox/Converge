@@ -1,6 +1,6 @@
 # ♻️ Kabadiwala Connect
 
-> **Smart India Hackathon (SIH) 2024 — E-Waste & Critical Minerals Recovery**  
+> **E-Waste & Critical Minerals Recovery**  
 > A mobile-first PWA that bridges informal scrap collectors (kabadiwalas) with authorized e-waste recyclers, enabling transparent price discovery, tamper-evident digital handovers, and EPR-compliant traceability.
 
 ---
@@ -272,18 +272,14 @@ Detailed documentation is available in the project root:
 | `06-development-deployment.md` | Dev setup, CI, deployment guide |
 | `07-ui-ux-guidelines.md` | Design system, accessibility, i18n |
 | `08-field-research-and-interviews.md` | Primary research with collectors |
-| `SIH_PROBLEM_STATEMENT_COMPLIANCE.md` | Mapping to SIH evaluation criteria |
+| `
 
 ---
 
-## 🏆 SIH Problem Statement
 
-**Domain:** E-Waste Management with Critical Mineral Recovery Focus  
-**Ministry:** Ministry of Mines / JNARDDC  
-**Hackathon:** Smart India Hackathon (SIH) 2024
 
 ---
 
 ## 📜 License
 
-MIT
+

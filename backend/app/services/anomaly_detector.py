@@ -29,7 +29,7 @@ def compute_mad(values: List[float]) -> tuple[float, float]:
 
 def detect_transaction_anomalies(
     db: Session,
-    district: str = "Pune",
+    district: str = "Mangalore",
     category: Optional[str] = None,
     z_threshold: float = 3.5
 ) -> List[Dict[str, Any]]:

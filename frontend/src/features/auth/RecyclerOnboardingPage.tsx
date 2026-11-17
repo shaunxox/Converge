@@ -17,7 +17,7 @@ export const RecyclerOnboardingPage: React.FC = () => {
   const [name, setName] = useState(provisionalUser?.name || '');
   const [phone, setPhone] = useState(provisionalUser?.phone || '');
   const [mpcbRef, setMpcbRef] = useState('');
-  const [district, setDistrict] = useState(provisionalUser?.district || 'Pune');
+  const [district, setDistrict] = useState(provisionalUser?.district || 'Mangalore');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [rates, setRates] = useState<Record<string, number>>({
@@ -30,7 +30,7 @@ export const RecyclerOnboardingPage: React.FC = () => {
     MIXED_PLASTIC: 25,
   });
 
-  const districts = ['Pune', 'Mumbai', 'Thane', 'Nagpur', 'Nashik', 'Pimpri-Chinchwad'];
+  const districts = ['Mangalore', 'Surathkal', 'Udupi', 'Manipal', 'Puttur', 'Bantwal', 'Bangalore'];
 
   const categoryLabels: Record<string, string> = {
     PCB: t('categories.PCB'),
@@ -54,8 +54,8 @@ export const RecyclerOnboardingPage: React.FC = () => {
         name,
         contact_phone: phone,
         authorization_ref_no: mpcbRef,
-        facility_lat: 18.5204,
-        facility_lng: 73.8567,
+        facility_lat: 12.9463,
+        facility_lng: 74.8080,
         offered_rates: rates,
         materials_accepted: Object.keys(rates),
       });
@@ -82,8 +82,8 @@ export const RecyclerOnboardingPage: React.FC = () => {
         authorization_status: 'verified',
         authorization_ref_no: mpcbRef,
         contact_phone: phone,
-        facility_lat: 18.5204,
-        facility_lng: 73.8567,
+        facility_lat: 12.9463,
+        facility_lng: 74.8080,
         offered_rates: rates,
         pickup_available: true,
         service_radius_km: 30.0,
@@ -108,7 +108,7 @@ export const RecyclerOnboardingPage: React.FC = () => {
       <div className="text-center mb-6 space-y-1">
         <div className="inline-flex items-center space-x-1.5 bg-amber-500/20 text-amber-400 px-3 py-1 rounded-full text-xs font-bold border border-amber-500/30">
           <ShieldCheck size={14} />
-          <span>{isEn ? 'MPCB Authorized Recycler Onboarding' : 'MPCB अधिकृत रीसायकलर नोंदणी'}</span>
+          <span>{isEn ? 'KSPPCB Authorized Recycler Onboarding' : 'KSPPCB अधिकृत रीसायकलर नोंदणी'}</span>
         </div>
         <h1 className="text-2xl font-black text-white">{isEn ? 'Recycler Facility Portal' : 'रीसायकलर सुविधा पोर्टल'}</h1>
       </div>
@@ -133,7 +133,7 @@ export const RecyclerOnboardingPage: React.FC = () => {
               {isEn ? 'Recycler Facility Profile' : 'व्यवसाय माहिती (Recycler Facility Profile)'}
             </h2>
             <p className="text-xs text-stone-500 font-medium">
-              {isEn ? 'Recycling center name & MPCB authorization license details' : 'रीसायकलिंग सेंटर आणि MPCB परवाना तपशील'}
+              {isEn ? 'Recycling center name & KSPPCB authorization license details' : 'रीसायकलिंग सेंटर आणि KSPPCB परवाना तपशील'}
             </p>
           </div>
 
@@ -173,14 +173,14 @@ export const RecyclerOnboardingPage: React.FC = () => {
 
             <div>
               <label className="block text-xs font-bold text-stone-700 mb-1">
-                {isEn ? 'MPCB Authorization Ref Number:' : 'MPCB Authorization Ref Number:'}
+                {isEn ? 'KSPPCB Authorization Ref Number:' : 'KSPPCB Authorization Ref Number:'}
               </label>
               <div className="relative">
                 <ShieldCheck size={16} className="absolute left-3 top-3 text-emerald-600" />
                 <input
                   type="text"
                   required
-                  placeholder="e.g. MPCB/E-WASTE/2024/099"
+                  placeholder="e.g. KSPPCB/E-WASTE/2024/099"
                   value={mpcbRef}
                   onChange={(e) => setMpcbRef(e.target.value)}
                   className="w-full pl-9 pr-3 py-2.5 bg-stone-50 border border-stone-300 rounded-xl text-stone-900 text-xs font-mono font-bold focus:ring-2 focus:ring-amber-500"

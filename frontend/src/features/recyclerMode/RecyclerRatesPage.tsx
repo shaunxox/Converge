@@ -4,7 +4,7 @@ import { updateRecyclerRates } from '../../data/remote/apiClient';
 
 export const RecyclerRatesPage: React.FC = () => {
   const [recyclerId, setRecyclerId] = useState('rec-pune-001');
-  const [recyclerName, setRecyclerName] = useState('EcoRecycle India');
+  const [recyclerName, setRecyclerName] = useState('EcoRecycle Mangalore');
 
   const [rates, setRates] = useState<Record<string, number>>({
     PCB: 260.0,

@@ -207,18 +207,19 @@ def update_recycler_config(
 def _infer_district_from_coords(lat: float, lng: float) -> str:
     """
     Simple bounding-box lookup to infer city/district from coordinates.
-    Covers Maharashtra cities relevant to the platform.
-    Expand as needed; or replace with a reverse-geocoding API call.
+    Covers coastal Karnataka & Mangalore region, plus major hubs.
     """
     DISTRICT_BOXES = [
-        ("Mumbai",          18.87, 19.28, 72.77, 72.99),
-        ("Thane",           19.10, 19.35, 72.95, 73.15),
-        ("Pimpri-Chinchwad",18.55, 18.72, 73.72, 73.88),
+        ("Mangalore",       12.75, 13.15, 74.75, 75.05),
+        ("Surathkal",       12.98, 13.05, 74.76, 74.85),
+        ("Udupi",           13.25, 13.45, 74.65, 74.85),
+        ("Manipal",         13.30, 13.40, 74.75, 74.83),
+        ("Puttur",          12.70, 12.85, 75.15, 75.28),
+        ("Bangalore",       12.80, 13.15, 77.45, 77.80),
         ("Pune",            18.42, 18.62, 73.78, 73.98),
-        ("Nagpur",          21.05, 21.25, 78.95, 79.20),
-        ("Nashik",          19.90, 20.10, 73.70, 73.90),
+        ("Mumbai",          18.87, 19.28, 72.77, 72.99),
     ]
     for name, lat_min, lat_max, lng_min, lng_max in DISTRICT_BOXES:
         if lat_min <= lat <= lat_max and lng_min <= lng <= lng_max:
             return name
-    return "Pune"  # default fallback
+    return "Mangalore"  # default fallback

@@ -110,7 +110,7 @@ def update_lot_status(
 
 @router.get("/anomalies", response_model=List[dict])
 def get_flagged_anomalies(
-    district: str = "Pune",
+    district: str = "Mangalore",
     category: Optional[str] = None,
     z_threshold: float = 3.5,
     db: Session = Depends(get_db)
@@ -200,7 +200,7 @@ def resolve_flagged_anomaly(
 
 
 @router.get("/minerals/impact")
-def get_critical_minerals_impact(district: str = "Pune District & Maharashtra Hub", db: Session = Depends(get_db)):
+def get_critical_minerals_impact(district: str = "Dakshina Kannada & Mangalore Hub", db: Session = Depends(get_db)):
     """
     Returns estimated critical minerals recovery totals based on processed e-waste volume.
     Translates raw e-waste tonnage into strategic mineral values (Li, Co, Nd, Ta, Ga, In, Cu).

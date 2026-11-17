@@ -10,22 +10,24 @@ interface LocationMapPickerProps {
   onClose: () => void;
 }
 
-const POPULAR_PUNE_PRESETS = [
-  { name: 'Wakad, Pune', lat: 18.5987, lng: 73.7688 },
-  { name: 'Pimpri-Chinchwad Hub', lat: 18.6298, lng: 73.7997 },
-  { name: 'Swargate Central, Pune', lat: 18.5018, lng: 73.8636 },
-  { name: 'Hadapsar Industrial Zone', lat: 18.5089, lng: 73.9260 },
-  { name: 'Kothrud, Pune', lat: 18.5074, lng: 73.8077 },
+const POPULAR_MANGALORE_PRESETS = [
+  { name: 'Baikampady Industrial Hub', lat: 12.9463, lng: 74.8080 },
+  { name: 'Hampankatta, Mangalore', lat: 12.8688, lng: 74.8427 },
+  { name: 'Kadri / Mallikatte, Mangalore', lat: 12.8858, lng: 74.8576 },
+  { name: 'Surathkal Port Hub', lat: 13.0067, lng: 74.7943 },
+  { name: 'Kankanady Commercial Zone', lat: 12.8645, lng: 74.8601 },
+  { name: 'Yeyyadi Industrial Area', lat: 12.8935, lng: 74.8622 },
+  { name: 'Bunder Scrap Market', lat: 12.8622, lng: 74.8355 },
 ];
 
 export const LocationMapPicker: React.FC<LocationMapPickerProps> = ({
   initialAddress = '',
-  initialLat = 18.5204,
-  initialLng = 73.8567,
+  initialLat = 12.9141,
+  initialLng = 74.8560,
   onSelect,
   onClose,
 }) => {
-  const [addressInput, setAddressInput] = useState(initialAddress || 'Wakad, Pune');
+  const [addressInput, setAddressInput] = useState(initialAddress || 'Hampankatta, Mangalore');
   const [lat, setLat] = useState(initialLat);
   const [lng, setLng] = useState(initialLng);
   const [isLocating, setIsLocating] = useState(false);
@@ -147,9 +149,9 @@ export const LocationMapPicker: React.FC<LocationMapPickerProps> = ({
 
         {/* Area Quick Presets */}
         <div className="space-y-1.5">
-          <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider block">Popular Pune Hub Presets</span>
+          <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider block">Popular Mangalore Hub Presets</span>
           <div className="flex flex-wrap gap-1.5">
-            {POPULAR_PUNE_PRESETS.map((p) => (
+            {POPULAR_MANGALORE_PRESETS.map((p) => (
               <button
                 key={p.name}
                 type="button"

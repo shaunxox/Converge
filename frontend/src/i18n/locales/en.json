@@ -18,14 +18,14 @@
     "incomingWaste": "Incoming Waste"
   },
   "roles": {
-    "recycler": "MPCB Authorized Recycler",
+    "recycler": "KSPPCB Authorized Recycler",
     "shop": "Kabadi Shop Owner",
     "sub_collector": "Feriwala Collector",
     "independent": "Independent Collector"
   },
   "priceBoard": {
     "title": "Today's Market Prices",
-    "district": "Pune District",
+    "district": "Dakshina Kannada / Mangalore District",
     "formalLabel": "Verified Recycler",
     "informalLabel": "Local Buyer",
     "trendUp": "Price rising",

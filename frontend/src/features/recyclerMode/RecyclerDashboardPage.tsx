@@ -88,7 +88,7 @@ export const RecyclerDashboardPage: React.FC = () => {
           payment_status: tx.payment_status || 'unpaid',
           created_at: tx.created_at,
           recycler_id: tx.recycler_id || recyclerId,
-          collection_address: mat?.collection_address || tx.collection_address || 'Wakad, Pune',
+          collection_address: mat?.collection_address || tx.collection_address || 'Hampankatta, Mangalore',
           pickup_scheduled_date: tx.pickup_scheduled_date || new Date().toISOString().split('T')[0],
           pickup_exact_time: tx.pickup_exact_time || '14:30',
           pickup_window: tx.pickup_window || 'afternoon',
@@ -106,17 +106,17 @@ export const RecyclerDashboardPage: React.FC = () => {
       // Scoped mock datasets for demo accounts (only used if no local or backend lots exist)
       const facilityMockLots: Record<string, AdminLot[]> = {
         'rec-pune-001': [
-          { lot_id: 'lot-pune-101', category: 'PCB', sub_category: 'Server Motherboards & RAM', weight_kg: 25.0, condition: 'intact', estimated_value: 6500, collector_id: 'col-demo-101', status: 'matched', payment_status: 'unpaid', recycler_id: 'rec-pune-001' },
-          { lot_id: 'lot-pune-102', category: 'BATTERY', sub_category: 'Li-Ion Laptop Battery Packs', weight_kg: 18.0, condition: 'damaged', estimated_value: 1620, collector_id: 'col-sub-001', status: 'confirmed', final_sale_value: 1620, payment_status: 'paid', recycler_id: 'rec-pune-001' },
-          { lot_id: 'lot-pune-103', category: 'CABLE', sub_category: 'Stripped Industrial Copper Wire', weight_kg: 32.0, condition: 'stripped', estimated_value: 4800, collector_id: 'col-sub-002', status: 'closed', final_sale_value: 4800, payment_status: 'paid', recycler_id: 'rec-pune-001' },
+          { lot_id: 'lot-mgl-101', category: 'PCB', sub_category: 'Server Motherboards & RAM', weight_kg: 25.0, condition: 'intact', estimated_value: 6500, collector_id: 'col-demo-101', status: 'matched', payment_status: 'unpaid', recycler_id: 'rec-pune-001' },
+          { lot_id: 'lot-mgl-102', category: 'BATTERY', sub_category: 'Li-Ion Laptop Battery Packs', weight_kg: 18.0, condition: 'damaged', estimated_value: 1620, collector_id: 'col-sub-001', status: 'confirmed', final_sale_value: 1620, payment_status: 'paid', recycler_id: 'rec-pune-001' },
+          { lot_id: 'lot-mgl-103', category: 'CABLE', sub_category: 'Stripped Industrial Copper Wire', weight_kg: 32.0, condition: 'stripped', estimated_value: 4800, collector_id: 'col-sub-002', status: 'closed', final_sale_value: 4800, payment_status: 'paid', recycler_id: 'rec-pune-001' },
         ],
-        'rec-mum-001': [
-          { lot_id: 'lot-mum-201', category: 'PCB', sub_category: 'Telecom Switching Racks & Gold PCBs', weight_kg: 45.0, condition: 'intact', estimated_value: 12825, collector_id: 'col-demo-101', status: 'matched', payment_status: 'unpaid', recycler_id: 'rec-mum-001' },
-          { lot_id: 'lot-mum-202', category: 'BATTERY', sub_category: 'Industrial UPS Battery Banks', weight_kg: 60.0, condition: 'intact', estimated_value: 6300, collector_id: 'col-ind-001', status: 'confirmed', final_sale_value: 6300, payment_status: 'paid', recycler_id: 'rec-mum-001' },
+        'rec-mgl-001': [
+          { lot_id: 'lot-mgl-101', category: 'PCB', sub_category: 'Server Motherboards & RAM', weight_kg: 25.0, condition: 'intact', estimated_value: 6500, collector_id: 'col-demo-101', status: 'matched', payment_status: 'unpaid', recycler_id: 'rec-mgl-001' },
+          { lot_id: 'lot-mgl-102', category: 'BATTERY', sub_category: 'Li-Ion Laptop Battery Packs', weight_kg: 18.0, condition: 'damaged', estimated_value: 1620, collector_id: 'col-sub-001', status: 'confirmed', final_sale_value: 1620, payment_status: 'paid', recycler_id: 'rec-mgl-001' },
         ],
-        'rec-pune-002': [
-          { lot_id: 'lot-chin-301', category: 'MOTOR_MAGNET', sub_category: 'Neodymium Stator Motor Assemblies', weight_kg: 40.0, condition: 'intact', estimated_value: 3000, collector_id: 'col-sub-001', status: 'matched', payment_status: 'unpaid', recycler_id: 'rec-pune-002' },
-          { lot_id: 'lot-chin-302', category: 'CRT', sub_category: 'Lead Glass Vacuum Tubes', weight_kg: 50.0, condition: 'damaged', estimated_value: 2000, collector_id: 'col-sub-002', status: 'closed', final_sale_value: 2000, payment_status: 'paid', recycler_id: 'rec-pune-002' },
+        'rec-mgl-002': [
+          { lot_id: 'lot-sur-301', category: 'MOTOR_MAGNET', sub_category: 'Neodymium Stator Motor Assemblies', weight_kg: 40.0, condition: 'intact', estimated_value: 3000, collector_id: 'col-sub-001', status: 'matched', payment_status: 'unpaid', recycler_id: 'rec-mgl-002' },
+          { lot_id: 'lot-sur-302', category: 'CRT', sub_category: 'Lead Glass Vacuum Tubes', weight_kg: 50.0, condition: 'damaged', estimated_value: 2000, collector_id: 'col-sub-002', status: 'closed', final_sale_value: 2000, payment_status: 'paid', recycler_id: 'rec-mgl-002' },
         ],
       };
 
@@ -268,10 +268,10 @@ export const RecyclerDashboardPage: React.FC = () => {
             <div className="flex items-center space-x-2">
               <h1 className="text-base sm:text-lg font-black text-stone-900 tracking-tight">{isQueuePage ? 'Incoming Waste' : 'Recycler Dashboard'}</h1>
               <span className="bg-emerald-100 text-emerald-800 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center space-x-1">
-                <ShieldCheck size={12} /> MPCB Verified
+                <ShieldCheck size={12} /> KSPPCB Verified
               </span>
             </div>
-            <p className="text-xs text-stone-500 font-medium">{currentUser?.name || 'EcoRecycle India'} · {currentUser?.district || 'Pune District'}</p>
+            <p className="text-xs text-stone-500 font-medium">{currentUser?.name || 'EcoRecycle Mangalore'} · {currentUser?.district || 'Mangalore District'}</p>
           </div>
         </div>
 
@@ -355,7 +355,7 @@ export const RecyclerDashboardPage: React.FC = () => {
             </div>
           </div>
           <p className="text-xl sm:text-3xl font-black text-stone-900">{stats ? stats.verified_recyclers_count : 1}</p>
-          <p className="text-xs text-purple-700 font-bold">MPCB License #BO/MPCB/RO-PUNE/2024</p>
+          <p className="text-xs text-purple-700 font-bold">KSPPCB License #PCB/KSPPCB/RO-MGL/2024</p>
         </div>
       </div>
 
@@ -452,7 +452,7 @@ export const RecyclerDashboardPage: React.FC = () => {
                 <div className="flex items-center justify-between pt-1 text-[10px] text-stone-500 font-medium">
                   <span className="truncate flex items-center gap-1">
                     <MapPin size={11} className="text-stone-400 shrink-0" />
-                    <span className="truncate">{lot.collection_address || 'Wakad, Pune'}</span>
+                    <span className="truncate">{lot.collection_address || 'Hampankatta, Mangalore'}</span>
                   </span>
                   <span className="text-emerald-700 font-bold shrink-0">Tap details →</span>
                 </div>
@@ -604,13 +604,13 @@ export const RecyclerDashboardPage: React.FC = () => {
               </div>
 
               <div className="bg-stone-50 border border-stone-200 rounded-2xl p-3 text-xs font-semibold text-stone-800">
-                {selectedDetailLot.collection_address || 'Wakad, Pune, Maharashtra'}
+                {selectedDetailLot.collection_address || 'Hampankatta, Mangalore, Karnataka'}
               </div>
 
               {/* Map Preview Image Tile */}
               <div className="relative h-32 w-full bg-stone-100 border border-stone-200 rounded-2xl overflow-hidden">
                 <img
-                  src={`https://staticmap.openstreetmap.de/staticmap.php?center=18.5204,73.8567&zoom=14&size=400x160&maptype=mapnik`}
+                  src={`https://staticmap.openstreetmap.de/staticmap.php?center=12.9141,74.8560&zoom=14&size=400x160&maptype=mapnik`}
                   alt="Location Map Preview"
                   className="w-full h-full object-cover"
                 />

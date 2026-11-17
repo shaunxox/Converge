@@ -41,69 +41,58 @@ const materialLabel = (category: string) => ({
 
 const NETWORK_FALLBACK_RECYCLERS = [
   {
-    recycler_id: 'rec-pune-001',
-    name: 'EcoRecycle India (Pune Hub)',
-    phone: '9876543210',
-    location: 'Pune',
+    recycler_id: 'rec-mgl-001',
+    name: 'EcoRecycle Mangalore (Baikampady Industrial Hub)',
+    phone: '9888888888',
+    location: 'Baikampady, Mangalore',
     distance_km: 3.2,
-    authorization_ref_no: 'MPCB/E-WASTE/2024/089',
+    authorization_ref_no: 'KSPPCB/E-WASTE/2024/052',
     authorization_status: 'verified',
-    offered_rates: { PCB: 260, BATTERY: 90, CABLE: 150, LCD_PANEL: 110, CRT: 40, MOTOR_MAGNET: 70, MIXED_PLASTIC: 25 },
+    offered_rates: { PCB: 265, BATTERY: 92, CABLE: 152, LCD_PANEL: 110, CRT: 40, MOTOR_MAGNET: 72, MIXED_PLASTIC: 25 },
     pickup_available: true,
   },
   {
-    recycler_id: 'rec-pune-002',
-    name: 'Chinchwad Aggregators & Metal Works',
+    recycler_id: 'rec-mgl-002',
+    name: 'Coastal Karnataka Green Recyclers',
     phone: '9765432109',
-    location: 'Pimpri-Chinchwad',
+    location: 'Surathkal',
     distance_km: 6.8,
-    authorization_ref_no: 'MPCB/E-WASTE/2024/045',
+    authorization_ref_no: 'KSPPCB/E-WASTE/2024/088',
     authorization_status: 'verified',
-    offered_rates: { PCB: 255, CABLE: 155, MOTOR_MAGNET: 75, BATTERY: 95 },
+    offered_rates: { PCB: 260, CABLE: 155, MOTOR_MAGNET: 75, BATTERY: 95 },
     pickup_available: true,
   },
   {
-    recycler_id: 'rec-mum-001',
-    name: 'GreenTech E-Waste Recyclers Mumbai',
+    recycler_id: 'rec-mgl-003',
+    name: 'Dakshina E-Scrap & Metal Processors (Yeyyadi)',
     phone: '9812345678',
-    location: 'Mumbai',
-    distance_km: 12.5,
-    authorization_ref_no: 'MPCB/E-WASTE/2024/112',
+    location: 'Yeyyadi, Mangalore',
+    distance_km: 4.5,
+    authorization_ref_no: 'KSPPCB/E-WASTE/2024/034',
     authorization_status: 'verified',
-    offered_rates: { PCB: 285, BATTERY: 105, CABLE: 165, LCD_PANEL: 125, CRT: 45, MOTOR_MAGNET: 80, MIXED_PLASTIC: 28 },
+    offered_rates: { PCB: 275, BATTERY: 98, CABLE: 160, LCD_PANEL: 115, CRT: 42, MOTOR_MAGNET: 78, MIXED_PLASTIC: 26 },
     pickup_available: true,
   },
   {
-    recycler_id: 'rec-mum-002',
-    name: 'Dharavi Metal & E-Resource Processors',
+    recycler_id: 'rec-mgl-004',
+    name: 'Kudla E-Waste Solutions (Bunder Port)',
     phone: '9833445566',
-    location: 'Mumbai',
-    distance_km: 14.0,
-    authorization_ref_no: 'MPCB/E-WASTE/2024/198',
+    location: 'Bunder, Mangalore',
+    distance_km: 2.1,
+    authorization_ref_no: 'KSPPCB/E-WASTE/2024/115',
     authorization_status: 'verified',
-    offered_rates: { PCB: 290, BATTERY: 110, CABLE: 170 },
+    offered_rates: { PCB: 280, BATTERY: 100, CABLE: 165 },
     pickup_available: false,
   },
   {
-    recycler_id: 'rec-thane-001',
-    name: 'Thane E-Scrap Solutions',
+    recycler_id: 'rec-udupi-001',
+    name: 'Udupi & Manipal CleanTech Recovery',
     phone: '9844556677',
-    location: 'Thane',
+    location: 'Udupi',
     distance_km: 18.2,
-    authorization_ref_no: 'MPCB/E-WASTE/2024/204',
+    authorization_ref_no: 'KSPPCB/E-WASTE/2024/204',
     authorization_status: 'verified',
-    offered_rates: { PCB: 270, BATTERY: 98, CABLE: 158, LCD_PANEL: 115 },
-    pickup_available: true,
-  },
-  {
-    recycler_id: 'rec-nag-001',
-    name: 'Nagpur CleanTech Recovery',
-    phone: '9855667788',
-    location: 'Nagpur',
-    distance_km: 22.5,
-    authorization_ref_no: 'MPCB/E-WASTE/2024/310',
-    authorization_status: 'verified',
-    offered_rates: { PCB: 240, BATTERY: 85, CABLE: 140, CRT: 35 },
+    offered_rates: { PCB: 270, BATTERY: 96, CABLE: 158, LCD_PANEL: 112 },
     pickup_available: true,
   },
 ];
@@ -121,7 +110,10 @@ export const RecyclerMatchPage: React.FC = () => {
   // true only when a real lot exists to match against
   const [hasValidLot, setHasValidLot] = useState<boolean>(false);
 
-  const district = (typeof window !== 'undefined' && localStorage.getItem('kabadiwala_district')) || 'Pune';
+  const rawDistrict = (typeof window !== 'undefined' && localStorage.getItem('kabadiwala_district')) || 'Mangalore';
+  const district = (/pune|hadapsar|kothrud|wakad|chinchwad|maharashtra/i.test(rawDistrict))
+    ? 'Mangalore'
+    : rawDistrict;
 
   useEffect(() => {
     async function loadMatches() {
@@ -141,8 +133,10 @@ export const RecyclerMatchPage: React.FC = () => {
       }
       setHasValidLot(lotFound);
 
-      const collectorLat = parseFloat(localStorage.getItem('kabadiwala_collector_lat') || '18.5204');
-      const collectorLng = parseFloat(localStorage.getItem('kabadiwala_collector_lng') || '73.8567');
+      const rawLat = typeof window !== 'undefined' ? localStorage.getItem('kabadiwala_collector_lat') : null;
+      const rawLng = typeof window !== 'undefined' ? localStorage.getItem('kabadiwala_collector_lng') : null;
+      const collectorLat = (rawLat && parseFloat(rawLat) && !/pune|hadapsar/i.test(rawDistrict)) ? parseFloat(rawLat) : 12.9141;
+      const collectorLng = (rawLng && parseFloat(rawLng) && !/pune|hadapsar/i.test(rawDistrict)) ? parseFloat(rawLng) : 74.8560;
 
       try {
         // 1. Fetch ranked location matches
@@ -160,15 +154,26 @@ export const RecyclerMatchPage: React.FC = () => {
 
         // Add remote & local recyclers
         [...allRemoteRecyclers, ...localRecyclers].forEach(r => {
+          const name = r.name || '';
+          const loc = r.district || r.operating_locality || r.location || '';
+          if (/pune|hadapsar|kothrud|wakad|chinchwad|dharavi|nagpur|mumbai|thane/i.test(name) || /pune|hadapsar|maharashtra/i.test(loc)) {
+            if (r.recycler_id === 'rec-pune-001') {
+              r.name = 'EcoRecycle Mangalore (Hub 1)';
+              r.location = 'Baikampady, Mangalore';
+              r.authorization_ref_no = 'KSPPCB/E-WASTE/2024/052';
+            } else {
+              return;
+            }
+          }
           const rid = r.recycler_id || r.id || r.contact_phone;
           if (rid) {
             poolMap.set(rid, {
               recycler_id: rid,
               name: r.name || 'Registered E-Waste Facility',
               phone: r.contact_phone || r.phone || '9876543210',
-              location: r.district || r.operating_locality || district,
+              location: r.location || r.district || r.operating_locality || 'Mangalore',
               distance_km: r.distance_km || Math.round((Math.random() * 12 + 2) * 10) / 10,
-              authorization_ref_no: r.authorization_ref_no || 'MPCB Verified',
+              authorization_ref_no: r.authorization_ref_no || 'KSPPCB Verified',
               authorization_status: r.authorization_status || 'verified',
               offered_rates: r.offered_rates || { PCB: 260, BATTERY: 95, CABLE: 150 },
               pickup_available: r.pickup_available ?? true,
@@ -179,6 +184,17 @@ export const RecyclerMatchPage: React.FC = () => {
         // Add ranked matches
         rankedMatches.forEach((m: any) => {
           const rec = m.recycler || {};
+          const name = rec.name || '';
+          const loc = rec.district || rec.operating_locality || '';
+          if (/pune|hadapsar|kothrud|wakad|chinchwad|dharavi|nagpur|mumbai|thane/i.test(name) || /pune|hadapsar|maharashtra/i.test(loc)) {
+            if (rec.recycler_id === 'rec-pune-001') {
+              rec.name = 'EcoRecycle Mangalore (Hub 1)';
+              rec.location = 'Baikampady, Mangalore';
+              rec.authorization_ref_no = 'KSPPCB/E-WASTE/2024/052';
+            } else {
+              return;
+            }
+          }
           const rid = rec.recycler_id || m.recycler_id;
           if (rid) {
             poolMap.set(rid, {
@@ -186,9 +202,9 @@ export const RecyclerMatchPage: React.FC = () => {
               recycler_id: rid,
               name: rec.name || poolMap.get(rid)?.name || 'Authorized Recycler',
               phone: rec.contact_phone || poolMap.get(rid)?.phone || '9876543210',
-              location: rec.district || poolMap.get(rid)?.location || district,
+              location: rec.location || rec.district || poolMap.get(rid)?.location || 'Mangalore',
               distance_km: m.distance_km || poolMap.get(rid)?.distance_km || 3.2,
-              authorization_ref_no: rec.authorization_ref_no || poolMap.get(rid)?.authorization_ref_no || 'MPCB Verified',
+              authorization_ref_no: rec.authorization_ref_no || poolMap.get(rid)?.authorization_ref_no || 'KSPPCB Verified',
               authorization_status: rec.authorization_status || 'verified',
               offered_rates: rec.offered_rates || poolMap.get(rid)?.offered_rates || { PCB: 260 },
               pickup_available: m.pickup_available ?? rec.pickup_available ?? true,
@@ -210,7 +226,7 @@ export const RecyclerMatchPage: React.FC = () => {
           const pickup = rec.pickup_available ?? true;
 
           const reasons: string[] = [];
-          if (rec.authorization_status === 'verified') reasons.push('MPCB Authorized');
+          if (rec.authorization_status === 'verified') reasons.push('KSPPCB Authorized');
           if (rate >= 250) reasons.push(`Best Rate (₹${rate}/kg)`);
           if (pickup) reasons.push('Doorstep Pickup');
           if (dist < 8.0) reasons.push(`Nearby (${dist.toFixed(1)} km)`);
@@ -267,17 +283,17 @@ export const RecyclerMatchPage: React.FC = () => {
   const [pickupDate, setPickupDate] = useState<string>(() => new Date().toISOString().split('T')[0]);
   const [pickupExactTime, setPickupExactTime] = useState<string>('14:30');
   const [pickupWindow, setPickupWindow] = useState<'morning' | 'afternoon' | 'evening'>('afternoon');
-  const [pickupAddress, setPickupAddress] = useState<string>('Wakad, Pune');
-  const [pickupLat, setPickupLat] = useState<number>(18.5204);
-  const [pickupLng, setPickupLng] = useState<number>(73.8567);
+  const [pickupAddress, setPickupAddress] = useState<string>('Hampankatta, Mangalore');
+  const [pickupLat, setPickupLat] = useState<number>(12.9141);
+  const [pickupLng, setPickupLng] = useState<number>(74.8560);
   const [showLocationPicker, setShowLocationPicker] = useState<boolean>(false);
   const [isSubmittingMatch, setIsSubmittingMatch] = useState<boolean>(false);
 
   useEffect(() => {
     if (material) {
-      setPickupAddress(material.collection_address || 'Wakad, Pune');
-      setPickupLat(material.collection_lat || 18.5204);
-      setPickupLng(material.collection_lng || 73.8567);
+      setPickupAddress(material.collection_address || 'Hampankatta, Mangalore');
+      setPickupLat(material.collection_lat || 12.9141);
+      setPickupLng(material.collection_lng || 74.8560);
     }
   }, [material]);
 
@@ -420,7 +436,7 @@ export const RecyclerMatchPage: React.FC = () => {
           <Search size={15} className="absolute left-3.5 top-3 text-stone-400" />
           <input
             type="text"
-            placeholder="Search facility name or district (e.g. Pune, Mumbai)..."
+            placeholder="Search facility name or district (e.g. Mangalore, Udupi)..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
             className="w-full pl-9 pr-4 py-2 bg-white border border-stone-200/80 rounded-2xl text-xs font-semibold text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#16A34A]/20 focus:border-[#16A34A] shadow-xs"
@@ -481,7 +497,7 @@ export const RecyclerMatchPage: React.FC = () => {
                       <div className="min-w-0">
                         <div className="flex items-center gap-1 truncate">
                           <h3 className="font-extrabold text-stone-900 text-xs sm:text-sm truncate">{rec.name}</h3>
-                          <span className="w-3.5 h-3.5 rounded-full bg-blue-500 text-white flex items-center justify-center text-[9px] font-black shrink-0" title="MPCB Verified">✓</span>
+                          <span className="w-3.5 h-3.5 rounded-full bg-blue-500 text-white flex items-center justify-center text-[9px] font-black shrink-0" title="KSPPCB Verified">✓</span>
                         </div>
                         <div className="flex items-center gap-2 text-[11px] font-semibold text-stone-500 mt-0.5">
                           <span>{rec.location} • {rec.distance_km} km</span>
@@ -601,7 +617,7 @@ export const RecyclerMatchPage: React.FC = () => {
 
             <div className="bg-stone-50 border border-stone-200/80 rounded-2xl p-3.5 space-y-2">
               <h4 className="font-bold text-stone-900 text-sm">{selectedRecyclerInfo.name}</h4>
-              <div className="flex items-center gap-1 text-[11px] text-emerald-700 font-semibold"><ShieldCheck size={13} /> MPCB Ref: {selectedRecyclerInfo.authorization_ref_no}</div>
+              <div className="flex items-center gap-1 text-[11px] text-emerald-700 font-semibold"><ShieldCheck size={13} /> KSPPCB Ref: {selectedRecyclerInfo.authorization_ref_no}</div>
               <div className="grid grid-cols-2 gap-2 pt-2 text-[11px] text-stone-600 border-t border-stone-200/50">
                 <div className="flex items-center gap-1.5"><Building size={13} className="text-stone-400" /><span>{selectedRecyclerInfo.location} ({selectedRecyclerInfo.distance_km} km)</span></div>
                 <div className="flex items-center gap-1.5"><Phone size={13} className="text-emerald-600" /><span>{selectedRecyclerInfo.phone}</span></div>
@@ -650,7 +666,7 @@ export const RecyclerMatchPage: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-extrabold text-stone-900 text-sm sm:text-base">Confirm Match & Schedule</h3>
-                  <p className="text-[11px] text-stone-500">Legal MPCB Traceability & Pickup Agreement</p>
+                  <p className="text-[11px] text-stone-500">Legal KSPPCB Traceability & Pickup Agreement</p>
                 </div>
               </div>
               <button
@@ -669,7 +685,7 @@ export const RecyclerMatchPage: React.FC = () => {
                   <h4 className="font-bold text-stone-900 text-xs sm:text-sm">{selectedMatchOffer.name}</h4>
                   <div className="flex items-center gap-1 text-[11px] text-emerald-700 font-semibold mt-0.5">
                     <ShieldCheck size={13} />
-                    <span>MPCB Ref: {selectedMatchOffer.authorization_ref_no || 'MPCB/E-WASTE/2024/VERIFIED'}</span>
+                    <span>KSPPCB Ref: {selectedMatchOffer.authorization_ref_no || 'KSPPCB/E-WASTE/2024/VERIFIED'}</span>
                   </div>
                 </div>
                 <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">

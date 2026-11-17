@@ -1,7 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import hiTranslation from './locales/hi.json';
-import mrTranslation from './locales/mr.json';
+import knTranslation from './locales/kn.json';
 import enTranslation from './locales/en.json';
 
 const getSavedLanguage = () => {
@@ -20,7 +20,7 @@ i18n
   .init({
     resources: {
       hi: { translation: hiTranslation },
-      mr: { translation: mrTranslation },
+      kn: { translation: knTranslation },
       en: { translation: enTranslation },
     },
     lng: getSavedLanguage(),

@@ -32,7 +32,7 @@ export const ProfilePage: React.FC = () => {
   const [displayName, setDisplayName] = useState<string>(initialUser?.name || 'Collector');
   const [phone, setPhone] = useState<string>(initialUser?.phone || '');
   const [userRole, setUserRole] = useState<string>(initialUser?.role || 'collector');
-  const [locality, setLocality] = useState<string>(initialUser?.district || 'Pune');
+  const [locality, setLocality] = useState<string>(initialUser?.district || 'Mangalore');
   const [shopCode, setShopCode] = useState<string | null>(initialUser?.shopCode || (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined' ? localStorage.getItem('kabadiwala_shop_code') : null));
   const [mpcbRef, setMpcbRef] = useState<string>(initialUser?.mpcb_ref || initialUser?.authorization_ref_no || '');
   const [authBadgeRef, setAuthBadgeRef] = useState<string>(initialUser?.auth_badge_ref || `AUTH-2024-${(initialUser?.id || 'DEMO').slice(-4)}`);
@@ -147,9 +147,9 @@ export const ProfilePage: React.FC = () => {
   const [pickupAvailable, setPickupAvailable] = useState(true);
   const [serviceRadius, setServiceRadius] = useState(10);
   const [materialsAccepted, setMaterialsAccepted] = useState(['PCB', 'BATTERY', 'CABLE', 'LCD_PANEL', 'MOTOR_MAGNET']);
-  const [facilityAddress, setFacilityAddress] = useState(() => typeof window !== 'undefined' && window.localStorage ? window.localStorage.getItem('kabadiwala_recycler_address') || 'Hadapsar Industrial Estate, Pune' : 'Hadapsar Industrial Estate, Pune');
-  const [facilityLat, setFacilityLat] = useState(() => Number(typeof window !== 'undefined' && window.localStorage ? window.localStorage.getItem('kabadiwala_recycler_lat') || '18.5089' : '18.5089'));
-  const [facilityLng, setFacilityLng] = useState(() => Number(typeof window !== 'undefined' && window.localStorage ? window.localStorage.getItem('kabadiwala_recycler_lng') || '73.9259' : '73.9259'));
+  const [facilityAddress, setFacilityAddress] = useState(() => typeof window !== 'undefined' && window.localStorage ? window.localStorage.getItem('kabadiwala_recycler_address') || 'Baikampady Industrial Hub, Mangalore' : 'Baikampady Industrial Hub, Mangalore');
+  const [facilityLat, setFacilityLat] = useState(() => Number(typeof window !== 'undefined' && window.localStorage ? window.localStorage.getItem('kabadiwala_recycler_lat') || '12.9463' : '12.9463'));
+  const [facilityLng, setFacilityLng] = useState(() => Number(typeof window !== 'undefined' && window.localStorage ? window.localStorage.getItem('kabadiwala_recycler_lng') || '74.8080' : '74.8080'));
   const [showFacilityMap, setShowFacilityMap] = useState(false);
   const [savingFacilitySettings, setSavingFacilitySettings] = useState(false);
   const [facilitySettingsSaved, setFacilitySettingsSaved] = useState(false);
@@ -274,10 +274,10 @@ export const ProfilePage: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-[10px] font-black uppercase text-emerald-400 tracking-wider">
-                      {currentLang === 'hi' ? 'MPCB लाइसेंस प्राधिकरण' : currentLang === 'mr' ? 'MPCB परवाना प्रमाण' : 'MPCB License Authorization'}
+                      {currentLang === 'hi' ? 'KSPPCB लाइसेंस प्राधिकरण' : currentLang === 'kn' ? 'ಕೆಎಸ್‌ಪಿಸಿಬಿ ಪರವಾನಗಿ ಅಧಿಕಾರ' : 'KSPPCB License Authorization'}
                     </span>
                     <h4 className="font-extrabold text-white text-base leading-tight">
-                      {currentLang === 'hi' ? 'सत्यापित ई-कचरा रीसायकलिंग केंद्र' : currentLang === 'mr' ? 'अधिकृत ई-कचरा रीसायकलिंग सेंटर' : 'Authorized E-Waste Processing Facility'}
+                      {currentLang === 'hi' ? 'सत्यापित ई-कचरा रीसायकलिंग केंद्र' : currentLang === 'kn' ? 'ಅಧಿಕೃತ ಇ-ತ್ಯಾಜ್ಯ ಮರುಬಳಕೆ ಕೇಂದ್ರ' : 'Authorized E-Waste Processing Facility'}
                     </h4>
                   </div>
                 </div>
@@ -288,11 +288,11 @@ export const ProfilePage: React.FC = () => {
 
               <div className="bg-stone-800/90 rounded-2xl p-4 text-xs text-stone-300 space-y-2 font-mono">
                 <div className="flex justify-between border-b border-stone-700 pb-1">
-                  <span className="text-stone-400">{currentLang === 'hi' ? 'परवाना नंबर:' : currentLang === 'mr' ? 'परवाना क्रमांक:' : 'MPCB Ref No:'}</span>
-                  <strong className="text-emerald-400">{mpcbRef || 'BO/MPCB/RO-PUNE/2024'}</strong>
+                  <span className="text-stone-400">{currentLang === 'hi' ? 'परवाना नंबर:' : currentLang === 'kn' ? 'ಪರವಾನಗಿ ಸಂಖ್ಯೆ:' : 'KSPPCB Ref No:'}</span>
+                  <strong className="text-emerald-400">{mpcbRef || 'PCB/KSPPCB/RO-MGL/2024'}</strong>
                 </div>
                 <div className="flex justify-between pt-0.5">
-                  <span className="text-stone-400">{currentLang === 'hi' ? 'कार्यक्षेत्र:' : currentLang === 'mr' ? 'कार्यक्षेत्र:' : 'District Hub:'}</span>
+                  <span className="text-stone-400">{currentLang === 'hi' ? 'कार्यक्षेत्र:' : currentLang === 'kn' ? 'ಕಾರ್ಯಕ್ಷೇತ್ರ / ಜಿಲ್ಲೆ:' : 'District Hub:'}</span>
                   <strong className="text-white">{locality}</strong>
                 </div>
               </div>
@@ -486,7 +486,7 @@ export const ProfilePage: React.FC = () => {
               </div>
 
               <p className="text-xs text-stone-700 font-medium">
-                Issued by: <strong className="text-stone-900">EcoRecycle India (MPCB Verified)</strong><br />
+                Issued by: <strong className="text-stone-900">EcoRecycle Mangalore (KSPPCB Verified)</strong><br />
                 Ref No: <span className="font-mono text-stone-900 font-bold">{authBadgeRef}</span>
               </p>
 

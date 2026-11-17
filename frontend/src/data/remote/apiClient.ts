@@ -34,7 +34,7 @@ export async function pushSyncOutbox(collectorId: string, items: any[]) {
   }
 }
 
-export async function pullSyncData(district: string = 'Pune') {
+export async function pullSyncData(district: string = 'Mangalore') {
   try {
     const response = await fetch(`${API_BASE_URL}/sync/pull?district=${encodeURIComponent(district)}`);
     if (!response.ok) {
@@ -48,7 +48,7 @@ export async function pullSyncData(district: string = 'Pune') {
   }
 }
 
-export async function fetchRecyclerMatches(category: string, lat: number = 18.5204, lng: number = 73.8567) {
+export async function fetchRecyclerMatches(category: string, lat: number = 12.9141, lng: number = 74.8560) {
   try {
     const response = await fetch(
       `${API_BASE_URL}/recyclers/match/rank?category=${encodeURIComponent(category)}&lat=${lat}&lng=${lng}`
@@ -63,11 +63,11 @@ export async function fetchRecyclerMatches(category: string, lat: number = 18.52
       return [
         {
           recycler: {
-            recycler_id: 'rec-pune-001',
-            name: 'EcoRecycle India (Pune Hub)',
+            recycler_id: 'rec-mgl-001',
+            name: 'EcoRecycle Mangalore (Baikampady Hub)',
             authorization_status: 'verified',
-            authorization_ref_no: 'MPCB/E-WASTE/2024/089',
-            contact_phone: '9876543210',
+            authorization_ref_no: 'KSPPCB/E-WASTE/2024/052',
+            contact_phone: '9888888888',
             offered_rates: { PCB: 260.0, BATTERY: 90.0, CABLE: 150.0 },
             pickup_available: true,
           },
@@ -172,7 +172,7 @@ export async function refinePriceEstimate(
   category: string,
   weightKg: number,
   condition: string,
-  district: string = 'Pune'
+  district: string = 'Mangalore'
 ): Promise<PriceRefineResult> {
   const FALLBACK_PRICES: Record<string, number> = {
     PCB: 260, BATTERY: 90, CABLE: 150, LCD_PANEL: 110,
@@ -226,7 +226,7 @@ export interface AnomalyRecord {
   weight_kg?: number;
 }
 
-export async function fetchPrices(district: string = 'Pune') {
+export async function fetchPrices(district: string = 'Mangalore') {
   try {
     const response = await fetch(`${API_BASE_URL}/prices?district=${encodeURIComponent(district)}`);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -276,7 +276,7 @@ export async function submitFieldPriceReport(data: {
     body: JSON.stringify({
       category: data.category,
       price_per_kg: data.price_per_kg,
-      district: data.district || 'Pune',
+      district: data.district || 'Mangalore',
       notes: data.notes || '',
     }),
   });
@@ -284,7 +284,7 @@ export async function submitFieldPriceReport(data: {
   return response.json();
 }
 
-export async function syncCommodityIndex(district: string = 'Pune') {
+export async function syncCommodityIndex(district: string = 'Mangalore') {
   const response = await fetch(`${API_BASE_URL}/prices/sync-commodity-index?district=${encodeURIComponent(district)}`, {
     method: 'POST',
   });
@@ -318,8 +318,8 @@ export async function registerRecycler(data: {
     name: data.name,
     contact_phone: data.contact_phone,
     authorization_ref_no: data.authorization_ref_no,
-    facility_lat: data.facility_lat || 18.5204,
-    facility_lng: data.facility_lng || 73.8567,
+    facility_lat: data.facility_lat || 12.9463,
+    facility_lng: data.facility_lng || 74.8080,
     service_radius_km: 30.0,
     materials_accepted: data.materials_accepted || Object.keys(data.offered_rates),
     authorization_status: 'verified',

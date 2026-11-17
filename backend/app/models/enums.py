@@ -77,7 +77,7 @@ class EventActor(str, enum.Enum):
 
 class PreferredLanguage(str, enum.Enum):
     hi = "hi"
-    mr = "mr"
+    kn = "kn"
     en = "en"
 
 class MineralEnum(str, enum.Enum):

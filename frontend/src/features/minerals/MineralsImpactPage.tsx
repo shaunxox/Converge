@@ -27,7 +27,7 @@ export const MineralsImpactPage: React.FC = () => {
       // Offline / fallback mock dataset for JNARDDC demonstration
       setData({
         unit: 'grams',
-        district: 'Pune District & Maharashtra Hub',
+        district: 'Dakshina Kannada & Mangalore Hub',
         total_e_waste_processed_kg: 1250.0,
         mineral_estimates: {
           copper: 250000.0, // 250 kg
@@ -117,7 +117,7 @@ export const MineralsImpactPage: React.FC = () => {
             <span className="truncate">Monitoring Hub</span>
             <Globe size={15} className="text-blue-600 shrink-0 hidden sm:inline" />
           </div>
-          <p className="text-base sm:text-xl font-black text-stone-900 truncate">{data?.district || 'Pune'}</p>
+          <p className="text-base sm:text-xl font-black text-stone-900 truncate">{data?.district || 'Mangalore'}</p>
           <p className="text-[9px] sm:text-xs text-stone-500 font-medium leading-tight line-clamp-1 sm:line-clamp-none">JNARDDC hub</p>
         </div>
       </div>

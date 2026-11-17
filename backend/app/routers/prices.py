@@ -19,7 +19,7 @@ class PriceRefineRequest(BaseModel):
     category: str
     weight_kg: float
     condition: str = "intact"
-    district: str = "Pune"
+    district: str = "Mangalore"
 
 
 @router.post("/refine")
@@ -50,7 +50,7 @@ def record_price_observation(payload: PriceObservationCreate, db: Session = Depe
 class FieldReportRequest(BaseModel):
     category: str
     price_per_kg: float
-    district: str = "Pune"
+    district: str = "Mangalore"
     collector_id: Optional[str] = None
     notes: Optional[str] = None
 
@@ -88,7 +88,7 @@ def submit_field_price_report(payload: FieldReportRequest, db: Session = Depends
 
 
 @router.post("/sync-commodity-index")
-def sync_commodity_index(district: str = "Pune", db: Session = Depends(get_db)):
+def sync_commodity_index(district: str = "Mangalore", db: Session = Depends(get_db)):
     """
     Strategy 4: Commodity Market Proxy (LME / Metal Spot Price derived indexing).
     Updates price observations for copper/metal-heavy e-waste categories (PCB, Cable, Motor, Battery)
@@ -131,7 +131,7 @@ def sync_commodity_index(district: str = "Pune", db: Session = Depends(get_db)):
 
 
 @router.get("/board", response_model=List[PriceAggregateResponse])
-def get_price_board(district: str = "Pune", db: Session = Depends(get_db)):
+def get_price_board(district: str = "Mangalore", db: Session = Depends(get_db)):
     categories = list(MaterialCategory)
     aggregates = []
     now_utc = datetime.now(timezone.utc)
@@ -201,6 +201,6 @@ def get_price_board(district: str = "Pune", db: Session = Depends(get_db)):
 
 # Alias: frontend apiClient calls GET /prices?district=... (without /board)
 @router.get("", response_model=List[PriceAggregateResponse])
-def get_price_board_alias(district: str = "Pune", db: Session = Depends(get_db)):
+def get_price_board_alias(district: str = "Mangalore", db: Session = Depends(get_db)):
     """Alias for /prices/board — used by frontend fetchPrices()."""
     return get_price_board(district=district, db=db)

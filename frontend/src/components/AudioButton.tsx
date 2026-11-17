@@ -78,7 +78,7 @@ export const AudioButton: React.FC<AudioButtonProps> = ({ textToSpeak, className
       window.speechSynthesis.resume();
 
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      const langMap: Record<string, string> = { hi: 'hi-IN', mr: 'mr-IN', en: 'en-IN' };
+      const langMap: Record<string, string> = { hi: 'hi-IN', kn: 'kn-IN', en: 'en-IN' };
       const targetLang = langMap[i18n.language] || 'hi-IN';
       utterance.lang = targetLang;
       utterance.rate = 0.95;
@@ -133,7 +133,7 @@ export const AudioButton: React.FC<AudioButtonProps> = ({ textToSpeak, className
       return;
     }
 
-    const language = i18n.language === 'hi' || i18n.language === 'mr' ? i18n.language : 'en';
+    const language = i18n.language === 'hi' || i18n.language === 'kn' ? i18n.language : 'en';
 
     if (language !== 'en') {
       try {

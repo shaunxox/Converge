@@ -11,7 +11,7 @@ export const CollectorOnboardingPage: React.FC = () => {
   const navigate = useNavigate();
 
   const [step, setStep] = useState(1);
-  const [district, setDistrict] = useState('Pune');
+  const [district, setDistrict] = useState('Mangalore');
   const [accountType, setAccountType] = useState<'independent' | 'shop' | 'sub_collector'>('shop');
   const [inputShopCode, setInputShopCode] = useState('');
   const [isScanning, setIsScanning] = useState(false);
@@ -26,9 +26,9 @@ export const CollectorOnboardingPage: React.FC = () => {
   const [copied, setCopied] = useState(false);
 
   const [showMapPicker, setShowMapPicker] = useState(false);
-  const [exactAddress, setExactAddress] = useState(localStorage.getItem('kabadiwala_collector_address') || 'Kothrud, Pune');
-  const [collectorLat, setCollectorLat] = useState<number>(parseFloat(localStorage.getItem('kabadiwala_collector_lat') || '18.5204'));
-  const [collectorLng, setCollectorLng] = useState<number>(parseFloat(localStorage.getItem('kabadiwala_collector_lng') || '73.8567'));
+  const [exactAddress, setExactAddress] = useState(localStorage.getItem('kabadiwala_collector_address') || 'Hampankatta, Mangalore');
+  const [collectorLat, setCollectorLat] = useState<number>(parseFloat(localStorage.getItem('kabadiwala_collector_lat') || '12.9141'));
+  const [collectorLng, setCollectorLng] = useState<number>(parseFloat(localStorage.getItem('kabadiwala_collector_lng') || '74.8560'));
 
   const handleSelectMapLocation = (lat: number, lng: number, address: string, locality: string) => {
     setCollectorLat(lat);
@@ -40,7 +40,7 @@ export const CollectorOnboardingPage: React.FC = () => {
     localStorage.setItem('kabadiwala_collector_address', address);
   };
 
-  const districts = ['Pune', 'Pimpri-Chinchwad', 'Mumbai', 'Thane', 'Nagpur', 'Nashik'];
+  const districts = ['Mangalore', 'Surathkal', 'Udupi', 'Manipal', 'Puttur', 'Bantwal', 'Bangalore'];
 
   const getProvisionalUser = () => {
     try {

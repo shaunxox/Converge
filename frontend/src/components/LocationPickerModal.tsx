@@ -14,14 +14,14 @@ export const LocationPickerModal: React.FC<LocationPickerModalProps> = ({
   isOpen,
   onClose,
   onSelectLocation,
-  initialLat = 18.5204,
-  initialLng = 73.8567,
+  initialLat = 12.9141,
+  initialLng = 74.8560,
   title = 'Select Exact Shop / Facility Location'
 }) => {
   const [lat, setLat] = useState<number>(initialLat);
   const [lng, setLng] = useState<number>(initialLng);
-  const [address, setAddress] = useState<string>('Kothrud, Pune, Maharashtra 411038');
-  const [locality, setLocality] = useState<string>('Pune');
+  const [address, setAddress] = useState<string>('Hampankatta, Mangalore, Karnataka 575001');
+  const [locality, setLocality] = useState<string>('Mangalore');
   const [isLocating, setIsLocating] = useState<boolean>(false);
   const [isGeocoding, setIsGeocoding] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -40,13 +40,13 @@ export const LocationPickerModal: React.FC<LocationPickerModalProps> = ({
         const data = await res.json();
         const display = data.display_name || `${latitude.toFixed(4)}, ${longitude.toFixed(4)}`;
         setAddress(display);
-        const city = data.address?.city || data.address?.town || data.address?.suburb || data.address?.county || 'Pune';
+        const city = data.address?.city || data.address?.town || data.address?.suburb || data.address?.county || 'Mangalore';
         setLocality(city);
       }
     } catch (err) {
       console.warn('Reverse geocode error:', err);
-      setAddress(`Lat: ${latitude.toFixed(4)}, Lng: ${longitude.toFixed(4)} (Pune District)`);
-      setLocality('Pune');
+      setAddress(`Lat: ${latitude.toFixed(4)}, Lng: ${longitude.toFixed(4)} (Mangalore District)`);
+      setLocality('Mangalore');
     } finally {
       setIsGeocoding(false);
     }

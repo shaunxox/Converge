@@ -24,7 +24,7 @@ class LoginResponse(BaseModel):
     role: str
     account_type: Optional[str] = None
     shop_code: Optional[str] = None
-    district: Optional[str] = "Pune"
+    district: Optional[str] = "Mangalore"
     access_token: str
     token_type: str = "bearer"
 
@@ -47,7 +47,7 @@ def login_user(payload: LoginRequest, db: Session = Depends(get_db)):
             phone_number=recycler.contact_phone,
             name=recycler.name,
             role="recycler",
-            district="Pune",
+            district="Mangalore",
             access_token=create_access_token(recycler.recycler_id, "recycler"),
         )
 
@@ -69,7 +69,7 @@ def login_user(payload: LoginRequest, db: Session = Depends(get_db)):
             role="collector",
             account_type=collector.account_type.value if collector.account_type else "independent",
             shop_code=collector.shop_code,
-            district=collector.operating_locality or "Pune",
+            district=collector.operating_locality or "Mangalore",
             access_token=create_access_token(collector.collector_id, "collector"),
         )
 

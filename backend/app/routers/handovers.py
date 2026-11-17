@@ -114,7 +114,7 @@ def confirm_handover(
         collector = db.query(Collector).filter(
             Collector.collector_id == tx.collector_id
         ).first()
-        district = (collector.operating_locality or "Pune") if collector else "Pune"
+        district = (collector.operating_locality or "Mangalore") if collector else "Mangalore"
 
         obs = PriceObservation(
             material_category=material.material_category,

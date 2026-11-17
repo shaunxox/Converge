@@ -104,34 +104,34 @@ const DEFAULT_BENCHMARK_RATES: Record<string, { name: string; categoryGroup: str
 // Fallback verified facilities list if DB is fresh
 const FALLBACK_RECYCLERS = [
   {
-    id: 'rec-pune-001',
-    name: 'EcoRecycle India (Pune Hub)',
-    phone: '9876543210',
-    mpcbRef: 'MPCB/E-WASTE/2024/089',
-    location: 'Pune',
+    id: 'rec-mgl-001',
+    name: 'EcoRecycle Mangalore (Baikampady Hub)',
+    phone: '9888888888',
+    mpcbRef: 'KSPPCB/E-WASTE/2024/052',
+    location: 'Baikampady, Mangalore',
     distanceKm: 3.2,
     verified: true,
     offered_rates: { PCB: 280, BATTERY: 95, CABLE: 160, LCD_PANEL: 120, CRT: 45, MOTOR_MAGNET: 80, MIXED_PLASTIC: 28 },
   },
   {
-    id: 'rec-mum-001',
-    name: 'GreenTech E-Waste Solutions',
-    phone: '9812345678',
-    mpcbRef: 'MPCB/E-WASTE/2024/112',
-    location: 'Mumbai',
-    distanceKm: 12.5,
+    id: 'rec-mgl-002',
+    name: 'Coastal Karnataka Green Recyclers',
+    phone: '9765432109',
+    mpcbRef: 'KSPPCB/E-WASTE/2024/088',
+    location: 'Surathkal',
+    distanceKm: 6.8,
     verified: true,
     offered_rates: { PCB: 285, BATTERY: 98, CABLE: 165, LCD_PANEL: 125, CRT: 42, MOTOR_MAGNET: 82, MIXED_PLASTIC: 30 },
   },
   {
-    id: 'rec-pune-002',
-    name: 'Chinchwad Aggregators & Metals',
-    phone: '9765432109',
-    mpcbRef: 'MPCB/E-WASTE/2024/054',
-    location: 'Pimpri-Chinchwad',
-    distanceKm: 6.8,
+    id: 'rec-mgl-003',
+    name: 'Dakshina E-Scrap & Metal Processors',
+    phone: '9812345678',
+    mpcbRef: 'KSPPCB/E-WASTE/2024/034',
+    location: 'Yeyyadi, Mangalore',
+    distanceKm: 4.5,
     verified: true,
-    offered_rates: { PCB: 270, BATTERY: 102, CABLE: 158, LCD_PANEL: 115, CRT: 48, MOTOR_MAGNET: 85, MIXED_PLASTIC: 26 },
+    offered_rates: { PCB: 275, BATTERY: 102, CABLE: 158, LCD_PANEL: 115, CRT: 48, MOTOR_MAGNET: 85, MIXED_PLASTIC: 26 },
   },
 ];
 
@@ -146,9 +146,9 @@ export const PriceBoardPage: React.FC = () => {
 
   const [district] = useState<string>(() => {
     try {
-      return (typeof window !== 'undefined' && window.localStorage && localStorage.getItem('kabadiwala_district')) || 'Pune';
+      return (typeof window !== 'undefined' && window.localStorage && localStorage.getItem('kabadiwala_district')) || 'Mangalore';
     } catch {
-      return 'Pune';
+      return 'Mangalore';
     }
   });
 
@@ -487,7 +487,7 @@ export const PriceBoardPage: React.FC = () => {
                   <h4 className="font-bold text-stone-900 text-xs sm:text-sm">{selectedRecycler.rec.name}</h4>
                   <div className="flex items-center gap-1 text-[11px] text-emerald-700 font-semibold mt-0.5">
                     <ShieldCheck size={13} />
-                    <span>MPCB Ref: {selectedRecycler.rec.mpcbRef || 'MPCB/E-WASTE/2024/VERIFIED'}</span>
+                    <span>KSPPCB Ref: {selectedRecycler.rec.mpcbRef || 'KSPPCB/E-WASTE/2024/VERIFIED'}</span>
                   </div>
                 </div>
                 <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">

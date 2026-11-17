@@ -35,7 +35,7 @@ def public_verify_lookup(identifier: str, db: Session = Depends(get_db)):
                 "approx_weight_kg": material.approx_weight_kg,
                 "condition": material.condition.value,
                 "estimated_value": material.estimated_value,
-                "collector_locality": collector.operating_locality if collector else "Pune",
+                "collector_locality": collector.operating_locality if collector else "Mangalore",
                 "is_authorized_agent": active_auth is not None,
                 "authorized_by_recycler": active_auth.recycler.name if active_auth else None,
                 "created_at": material.created_at.isoformat() if material.created_at else None,

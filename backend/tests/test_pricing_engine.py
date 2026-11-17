@@ -127,7 +127,7 @@ class TestPriceRefineEndpoint:
             "condition": "intact",
         })
         assert resp.status_code == 200
-        assert resp.json()["district"] == "Pune"
+        assert resp.json()["district"] == "Mangalore"
 
     def test_refine_stripped_is_cheaper_than_intact(self):
         r_intact = client.post("/prices/refine", json={"category": "PCB", "weight_kg": 10.0, "condition": "intact"}).json()

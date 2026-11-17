@@ -40,13 +40,13 @@ export const LoginPage: React.FC = () => {
           role: user.role,
           accountType: user.account_type || 'independent',
           shopCode: user.shop_code || null,
-          district: user.district || 'Pune',
+          district: user.district || 'Mangalore',
           isNew: false,
         };
         localStorage.setItem('kabadiwala_user', JSON.stringify(userObj));
         if (user.access_token) localStorage.setItem('kabadiwala_access_token', user.access_token);
         if (user.shop_code) localStorage.setItem('kabadiwala_shop_code', user.shop_code);
-        localStorage.setItem('kabadiwala_district', user.district || 'Pune');
+        localStorage.setItem('kabadiwala_district', user.district || 'Mangalore');
         localStorage.setItem('kabadiwala_account_type', user.account_type || 'independent');
 
         navigate(role === 'recycler' ? '/recycler' : '/');
@@ -80,7 +80,7 @@ export const LoginPage: React.FC = () => {
   const DEMO_ACCOUNTS = [
     {
       title: 'Ramesh Kumar (Ganesh Kabadi Shop)',
-      desc: 'Shop Owner • Pune',
+      desc: 'Shop Owner • Mangalore',
       phone: '9876543210',
       role: 'collector' as const,
       tag: 'Shop Owner',
@@ -94,21 +94,21 @@ export const LoginPage: React.FC = () => {
     },
     {
       title: 'Anil Deshmukh (Independent)',
-      desc: 'Waste Collector • Shivajinagar',
+      desc: 'Waste Collector • Hampankatta',
       phone: '9800033333',
       role: 'collector' as const,
       tag: 'Independent',
     },
     {
-      title: 'EcoRecycle India (Pune Hub)',
-      desc: 'MPCB Verified Recycler Facility',
+      title: 'EcoRecycle Mangalore (Baikampady)',
+      desc: 'KSPPCB Verified Recycler Facility',
       phone: '9876543210',
       role: 'recycler' as const,
       tag: 'Recycler Hub',
     },
     {
-      title: 'GreenTech E-Waste Solutions',
-      desc: 'MPCB Verified Recycler • Mumbai',
+      title: 'Coastal Karnataka Green Recyclers',
+      desc: 'KSPPCB Verified Recycler • Surathkal',
       phone: '9812345678',
       role: 'recycler' as const,
       tag: 'Recycler Hub',
@@ -130,7 +130,7 @@ export const LoginPage: React.FC = () => {
             {[
               { code: 'en', label: 'English' },
               { code: 'hi', label: 'हिंदी' },
-              { code: 'mr', label: 'मराठी' },
+              { code: 'kn', label: 'ಕನ್ನಡ' },
             ].map((lang) => (
               <button
                 key={lang.code}
@@ -218,7 +218,7 @@ export const LoginPage: React.FC = () => {
                   <input
                     type="text"
                     required
-                    placeholder={role === 'recycler' ? 'e.g. Pune Metal Recyclers' : 'e.g. Ramesh Kumar'}
+                    placeholder={role === 'recycler' ? 'e.g. Mangalore Metal Recyclers' : 'e.g. Ramesh Kumar'}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="w-full pl-10 pr-4 py-3 bg-stone-50/70 border border-stone-200 rounded-2xl text-stone-900 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"

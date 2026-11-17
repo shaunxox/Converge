@@ -43,14 +43,14 @@ export const VerifyPage: React.FC = () => {
       setResult({
         type: 'collection_agent',
         id: idToSearch,
-        name_or_title: 'Authorized Collection Agent — EcoRecycle India',
+        name_or_title: 'Authorized Collection Agent — EcoRecycle Mangalore',
         verification_status: 'active',
         is_valid: true,
         details: {
-          issuing_recycler_name: 'EcoRecycle India (MPCB Authorized)',
+          issuing_recycler_name: 'EcoRecycle Mangalore (KSPPCB Authorized)',
           scope_note: 'PCB, Batteries & Cables Collection',
           issued_at: new Date().toISOString(),
-          operating_locality: 'Pune District',
+          operating_locality: 'Mangalore District',
         },
       });
     } finally {

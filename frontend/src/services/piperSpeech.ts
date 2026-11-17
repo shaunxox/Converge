@@ -12,7 +12,7 @@ let activeUrl: string | null = null;
 
 const voicePrefix: Record<string, string> = {
   hi: 'hi_IN',
-  mr: 'mr_IN',
+  kn: 'kn_IN',
 };
 
 async function loadPiperWithTimeout() {
