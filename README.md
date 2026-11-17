@@ -282,4 +282,5 @@ Detailed documentation is available in the project root:
 
 ## 📜 License
 
+MIT License
 

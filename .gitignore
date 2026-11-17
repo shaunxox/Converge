@@ -1,12 +1,21 @@
+<<<<<<< HEAD
 # Markdown policy
 *.md
 !README.md
 
 # Environment / Secrets
+=======
+
+# Dependencies
+node_modules/
+
+# Environment variables
+>>>>>>> origin/vion
 .env
 .env.*
 !.env.example
 
+<<<<<<< HEAD
 # Node / Frontend
 node_modules/
 dist/
@@ -69,7 +78,14 @@ frontend/android/captures/
 # IDE & OS
 .DS_Store
 Thumbs.db
+desktop.ini
 .vscode/
 .idea/
 *.swp
 *.swo
+
+# Build outputs
+build/
+.next/
+out/
+*.log
